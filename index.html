@@ -3,80 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Tools Hub - फ्री ऑनलाइन कैलकुलेटर</title>
+  
+  <!-- SEO Meta Tags (गूगल सर्च के लिए) -->
+  <title>SmartToolsHub - फ्री ऑनलाइन कैलकुलेटर (Age, EMI, SIP, GST)</title>
+  <meta name="description" content="मुफ्त और आसान ऑनलाइन कैलकुलेटर: अपनी उम्र, लोन ईएमआई, एसआईपी रिटर्न, जीएसटी और डिस्काउंट की तुरंत गणना करें।">
+  <meta name="keywords" content="age calculator, emi calculator, sip calculator, gst calculator, free tools hindi">
+  <meta name="author" content="Prem">
+  
+  <!-- Open Graph (WhatsApp और सोशल मीडिया पर शेयर करने के लिए) -->
+  <meta property="og:title" content="SmartToolsHub - दैनिक उपयोग के सभी कैलकुलेटर एक जगह">
+  <meta property="og:description" content="Age, EMI, SIP, GST और Discount तुरंत निकालें। बिल्कुल फ्री!">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-4 shadow-md text-center">
-    <h1 class="text-2xl font-bold">SmartToolsHub</h1>
-    <p class="text-sm opacity-90">दैनिक उपयोग के लिए आसान और मुफ़्त कैलकुलेटर</p>
+  <!-- Header Section -->
+  <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-black tracking-wide">⚡ SmartToolsHub</h1>
+        <p class="text-xs text-blue-100 mt-0.5">दैनिक उपयोग के आसान, सटीक और मुफ़्त कैलकुलेटर</p>
+      </div>
+      <div class="text-xs bg-white/20 px-3 py-1.5 rounded-full font-medium backdrop-blur-sm">
+        100% फ्री & फास्ट
+      </div>
+    </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="max-w-4xl mx-auto p-4 grid gap-6 md:grid-cols-2 mt-6">
+  <!-- Main Tools Grid -->
+  <main class="max-w-6xl mx-auto px-4 py-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 flex-grow">
 
     <!-- Tool 1: Age Calculator -->
-    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-      <h2 class="text-lg font-bold text-blue-600 mb-3">📅 Age Calculator (उम्र निकालें)</h2>
-      <label class="block text-sm text-gray-600 mb-1">अपनी जन्मतिथि चुनें:</label>
-      <input type="date" id="birthDate" class="w-full p-2 border rounded-md mb-3 focus:outline-blue-500">
-      <button onclick="calculateAge()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">उम्र की गणना करें</button>
-      <div id="ageResult" class="mt-3 text-base font-semibold text-gray-700"></div>
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-2xl">📅</span>
+        <h2 class="text-lg font-bold text-slate-800">Age Calculator</h2>
+      </div>
+      <label class="block text-xs font-semibold text-slate-500 mb-1">अपनी जन्मतिथि चुनें:</label>
+      <input type="date" id="birthDate" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm mb-3 focus:outline-blue-500">
+      <button onclick="calculateAge()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+        उम्र निकालें
+      </button>
+      <div id="ageResult" class="mt-4 p-3 bg-blue-50 text-blue-900 rounded-lg text-sm font-semibold hidden"></div>
     </div>
 
     <!-- Tool 2: Loan EMI Calculator -->
-    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-      <h2 class="text-lg font-bold text-blue-600 mb-3">💰 Loan EMI Calculator (क़िस्त निकालें)</h2>
-      <div class="space-y-2">
-        <input type="number" id="loanAmount" placeholder="लोन राशि (₹)" class="w-full p-2 border rounded-md text-sm">
-        <input type="number" id="interestRate" placeholder="ब्याज दर (% प्रति वर्ष)" class="w-full p-2 border rounded-md text-sm">
-        <input type="number" id="loanTenure" placeholder="अवधि (महीनों में)" class="w-full p-2 border rounded-md text-sm">
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-2xl">🏦</span>
+        <h2 class="text-lg font-bold text-slate-800">Loan EMI Calculator</h2>
       </div>
-      <button onclick="calculateEMI()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition mt-3">EMI देखें</button>
-      <div id="emiResult" class="mt-3 text-base font-semibold text-gray-700"></div>
+      <div class="space-y-2.5 mb-3">
+        <input type="number" id="loanAmount" placeholder="लोन राशि (₹)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+        <input type="number" id="interestRate" placeholder="ब्याज दर (% प्रति वर्ष)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+        <input type="number" id="loanTenure" placeholder="अवधि (महीनों में)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+      </div>
+      <button onclick="calculateEMI()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+        EMI की गणना करें
+      </button>
+      <div id="emiResult" class="mt-4 p-3 bg-blue-50 text-blue-900 rounded-lg text-sm font-semibold hidden space-y-1"></div>
+    </div>
+
+    <!-- Tool 3: SIP Return Calculator -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-2xl">📈</span>
+        <h2 class="text-lg font-bold text-slate-800">SIP Calculator</h2>
+      </div>
+      <div class="space-y-2.5 mb-3">
+        <input type="number" id="monthlySip" placeholder="मासिक निवेश (₹)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+        <input type="number" id="sipRate" placeholder="अनुमानित रिटर्न (% प्रति वर्ष)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+        <input type="number" id="sipYears" placeholder="समय (वर्षों में)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+      </div>
+      <button onclick="calculateSIP()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+        रिटर्न देखें
+      </button>
+      <div id="sipResult" class="mt-4 p-3 bg-blue-50 text-blue-900 rounded-lg text-sm font-semibold hidden space-y-1"></div>
+    </div>
+
+    <!-- Tool 4: GST Calculator -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-2xl">🧾</span>
+        <h2 class="text-lg font-bold text-slate-800">GST Calculator</h2>
+      </div>
+      <div class="space-y-2.5 mb-3">
+        <input type="number" id="gstAmount" placeholder="मूल राशि (₹)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+        <select id="gstRate" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm bg-white">
+          <option value="5">5% GST</option>
+          <option value="12">12% GST</option>
+          <option value="18" selected>18% GST (मानक)</option>
+          <option value="28">28% GST</option>
+        </select>
+      </div>
+      <button onclick="calculateGST()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+        GST जोड़ें
+      </button>
+      <div id="gstResult" class="mt-4 p-3 bg-blue-50 text-blue-900 rounded-lg text-sm font-semibold hidden space-y-1"></div>
+    </div>
+
+    <!-- Tool 5: Discount / Percentage Calculator -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-2xl">🏷️</span>
+        <h2 class="text-lg font-bold text-slate-800">Discount Calculator</h2>
+      </div>
+      <div class="space-y-2.5 mb-3">
+        <input type="number" id="originalPrice" placeholder="असल कीमत (₹)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+        <input type="number" id="discountPercent" placeholder="छूट / Discount (%)" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm">
+      </div>
+      <button onclick="calculateDiscount()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+        फाइनल कीमत देखें
+      </button>
+      <div id="discountResult" class="mt-4 p-3 bg-blue-50 text-blue-900 rounded-lg text-sm font-semibold hidden space-y-1"></div>
     </div>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="text-center text-gray-500 text-xs py-8 mt-12 border-t">
-    <p>© 2026 SmartToolsHub. सर्वाधिकार सुरक्षित।</p>
+  <!-- Footer Section -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
+      <p class="text-slate-300 font-semibold text-sm">SmartToolsHub - आपका अपना स्मार्ट टूल पोर्टल</p>
+      <div class="flex justify-center gap-4 text-slate-400">
+        <a href="#" class="hover:underline">About Us</a>
+        <span>•</span>
+        <a href="#" class="hover:underline">Privacy Policy</a>
+        <span>•</span>
+        <a href="#" class="hover:underline">Contact</a>
+      </div>
+      <p>© 2026 SmartToolsHub. सर्वाधिकार सुरक्षित।</p>
+    </div>
   </footer>
 
-  <!-- Logic Script -->
+  <!-- Interactive JavaScript Logic -->
   <script>
-    // Age Calculation
+    // 1. Age Calculator
     function calculateAge() {
       const birthVal = document.getElementById('birthDate').value;
+      const res = document.getElementById('ageResult');
       if (!birthVal) {
-        document.getElementById('ageResult').innerText = "कृपया जन्मतिथि चुनें।";
+        res.innerHTML = "कृपया जन्मतिथि चुनें।";
+        res.classList.remove('hidden');
         return;
       }
       const birthDate = new Date(birthVal);
       const today = new Date();
-      let years = today.getFullYear() - birthDate.getFullYear();
-      let months = today.getMonth() - birthDate.getMonth();
-      if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
-        years--;
+      let y = today.getFullYear() - birthDate.getFullYear();
+      let m = today.getMonth() - birthDate.getMonth();
+      let d = today.getDate() - birthDate.getDate();
+
+      if (d < 0) {
+        m--;
+        d += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
       }
-      document.getElementById('ageResult').innerText = `आपकी उम्र: ${years} वर्ष है।`;
+      if (m < 0) {
+        y--;
+        m += 12;
+      }
+      res.innerHTML = `आपकी उम्र: <strong>${y} वर्ष, ${m} महीने, ${d} दिन</strong> है।`;
+      res.classList.remove('hidden');
     }
 
-    // EMI Calculation
+    // 2. EMI Calculator
     function calculateEMI() {
       const P = parseFloat(document.getElementById('loanAmount').value);
       const r = parseFloat(document.getElementById('interestRate').value) / (12 * 100);
       const n = parseFloat(document.getElementById('loanTenure').value);
+      const res = document.getElementById('emiResult');
 
       if (!P || !r || !n) {
-        document.getElementById('emiResult').innerText = "कृपया सभी बॉक्स भरें।";
+        res.innerHTML = "कृपया सभी बॉक्स सही भरें।";
+        res.classList.remove('hidden');
         return;
       }
-
       const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      document.getElementById('emiResult').innerText = `आपकी मासिक EMI: ₹${Math.round(emi).toLocaleString('en-IN')}`;
+      const totalPay = emi * n;
+      const totalInterest = totalPay - P;
+
+      res.innerHTML = `
+        <div>मासिक EMI: <span class="text-blue-700 font-bold">₹${Math.round(emi).toLocaleString('en-IN')}</span></div>
+        <div class="text-xs text-slate-600">कुल ब्याज: ₹${Math.round(totalInterest).toLocaleString('en-IN')}</div>
+        <div class="text-xs text-slate-600">कुल भुगतान: ₹${Math.round(totalPay).toLocaleString('en-IN')}</div>
+      `;
+      res.classList.remove('hidden');
+    }
+
+    // 3. SIP Calculator
+    function calculateSIP() {
+      const p = parseFloat(document.getElementById('monthlySip').value);
+      const i = (parseFloat(document.getElementById('sipRate').value) / 100) / 12;
+      const n = parseFloat(document.getElementById('sipYears').value) * 12;
+      const res = document.getElementById('sipResult');
+
+      if (!p || !i || !n) {
+        res.innerHTML = "कृपया सभी विवरण दर्ज करें।";
+        res.classList.remove('hidden');
+        return;
+      }
+      const totalAmount = p * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+      const totalInvested = p * n;
+      const returns = totalAmount - totalInvested;
+
+      res.innerHTML = `
+        <div>कुल अनुमानित राशि: <span class="text-emerald-700 font-bold">₹${Math.round(totalAmount).toLocaleString('en-IN')}</span></div>
+        <div class="text-xs text-slate-600">जमा राशि: ₹${Math.round(totalInvested).toLocaleString('en-IN')}</div>
+        <div class="text-xs text-slate-600">कुल मुनाफा: ₹${Math.round(returns).toLocaleString('en-IN')}</div>
+      `;
+      res.classList.remove('hidden');
+    }
+
+    // 4. GST Calculator
+    function calculateGST() {
+      const amount = parseFloat(document.getElementById('gstAmount').value);
+      const rate = parseFloat(document.getElementById('gstRate').value);
+      const res = document.getElementById('gstResult');
+
+      if (!amount) {
+        res.innerHTML = "कृपया मूल राशि दर्ज करें।";
+        res.classList.remove('hidden');
+        return;
+      }
+      const gstTax = (amount * rate) / 100;
+      const total = amount + gstTax;
+
+      res.innerHTML = `
+        <div>कुल राशि (GST सहित): <span class="text-blue-700 font-bold">₹${total.toFixed(2)}</span></div>
+        <div class="text-xs text-slate-600">GST टैक्स (${rate}%): ₹${gstTax.toFixed(2)}</div>
+      `;
+      res.classList.remove('hidden');
+    }
+
+    // 5. Discount Calculator
+    function calculateDiscount() {
+      const price = parseFloat(document.getElementById('originalPrice').value);
+      const disc = parseFloat(document.getElementById('discountPercent').value);
+      const res = document.getElementById('discountResult');
+
+      if (!price || !disc) {
+        res.innerHTML = "कृपया दोनों जानकारी भरें।";
+        res.classList.remove('hidden');
+        return;
+      }
+      const saveAmount = (price * disc) / 100;
+      const finalPrice = price - saveAmount;
+
+      res.innerHTML = `
+        <div>अंतिम कीमत: <span class="text-emerald-700 font-bold">₹${finalPrice.toFixed(2)}</span></div>
+        <div class="text-xs text-slate-600">आपकी बचत: ₹${saveAmount.toFixed(2)} (${disc}%)</div>
+      `;
+      res.classList.remove('hidden');
     }
   </script>
 </body>
