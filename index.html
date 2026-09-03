@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Tools Hub - फ्री ऑनलाइन कैलकुलेटर</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 shadow-md text-center">
+    <h1 class="text-2xl font-bold">SmartToolsHub</h1>
+    <p class="text-sm opacity-90">दैनिक उपयोग के लिए आसान और मुफ़्त कैलकुलेटर</p>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto p-4 grid gap-6 md:grid-cols-2 mt-6">
+
+    <!-- Tool 1: Age Calculator -->
+    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+      <h2 class="text-lg font-bold text-blue-600 mb-3">📅 Age Calculator (उम्र निकालें)</h2>
+      <label class="block text-sm text-gray-600 mb-1">अपनी जन्मतिथि चुनें:</label>
+      <input type="date" id="birthDate" class="w-full p-2 border rounded-md mb-3 focus:outline-blue-500">
+      <button onclick="calculateAge()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">उम्र की गणना करें</button>
+      <div id="ageResult" class="mt-3 text-base font-semibold text-gray-700"></div>
+    </div>
+
+    <!-- Tool 2: Loan EMI Calculator -->
+    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+      <h2 class="text-lg font-bold text-blue-600 mb-3">💰 Loan EMI Calculator (क़िस्त निकालें)</h2>
+      <div class="space-y-2">
+        <input type="number" id="loanAmount" placeholder="लोन राशि (₹)" class="w-full p-2 border rounded-md text-sm">
+        <input type="number" id="interestRate" placeholder="ब्याज दर (% प्रति वर्ष)" class="w-full p-2 border rounded-md text-sm">
+        <input type="number" id="loanTenure" placeholder="अवधि (महीनों में)" class="w-full p-2 border rounded-md text-sm">
+      </div>
+      <button onclick="calculateEMI()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition mt-3">EMI देखें</button>
+      <div id="emiResult" class="mt-3 text-base font-semibold text-gray-700"></div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-500 text-xs py-8 mt-12 border-t">
+    <p>© 2026 SmartToolsHub. सर्वाधिकार सुरक्षित।</p>
+  </footer>
+
+  <!-- Logic Script -->
+  <script>
+    // Age Calculation
+    function calculateAge() {
+      const birthVal = document.getElementById('birthDate').value;
+      if (!birthVal) {
+        document.getElementById('ageResult').innerText = "कृपया जन्मतिथि चुनें।";
+        return;
+      }
+      const birthDate = new Date(birthVal);
+      const today = new Date();
+      let years = today.getFullYear() - birthDate.getFullYear();
+      let months = today.getMonth() - birthDate.getMonth();
+      if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+        years--;
+      }
+      document.getElementById('ageResult').innerText = `आपकी उम्र: ${years} वर्ष है।`;
+    }
+
+    // EMI Calculation
+    function calculateEMI() {
+      const P = parseFloat(document.getElementById('loanAmount').value);
+      const r = parseFloat(document.getElementById('interestRate').value) / (12 * 100);
+      const n = parseFloat(document.getElementById('loanTenure').value);
+
+      if (!P || !r || !n) {
+        document.getElementById('emiResult').innerText = "कृपया सभी बॉक्स भरें।";
+        return;
+      }
+
+      const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      document.getElementById('emiResult').innerText = `आपकी मासिक EMI: ₹${Math.round(emi).toLocaleString('en-IN')}`;
+    }
+  </script>
+</body>
+</html>
